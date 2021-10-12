@@ -21,9 +21,9 @@ dns_raw = File.readlines("zone")
 def parse_dns(dns_raw)
   dns_hash = Hash.new
   #Creat a Hash for the DNS raw
-  dns_raw.each do |x|
-    if (x[0]!="#" && !(x.strip.empty?))
-      split_record = x.split(",")
+  dns_raw.each do |dns|
+    if (dns[0]!="#" && !(dns.strip.empty?))
+      split_record = dns.split(",")
       dns_hash[split_record[1].strip] = {:type => split_record[0].strip, :target => split_record[2].strip }
     end
   end
